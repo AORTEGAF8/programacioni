@@ -1,0 +1,77 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+int suma(int num1, int num2);
+int resta(int num1, int num2);
+int multiplicacion(int num1, int num2);
+int division(int num1, int num2);
+double raizCuadrada(int num);
+
+
+int main() {
+    int opcion, num1, num2;
+
+    cout << "Ingrese el primer número: ";
+    cin >> num1;
+
+    cout << "Ingrese el segundo número: ";
+    cin >> num2;
+
+    cout << "Seleccione la operación a realizar:\n";
+    cout << "1. Suma\n2. Resta\n3. Multiplicación\n4. División\n5. Raíz Cuadrada\n";
+    cin >> opcion;
+
+    int resultado;
+
+    switch (opcion) {
+        case 1:
+            resultado = suma(num1, num2);
+            break;
+        case 2:
+            resultado = resta(num1, num2);
+            break;
+        case 3:
+            resultado = multiplicacion(num1, num2);
+            break;
+        case 4:
+            resultado = division(num1, num2);
+            break;
+        case 5:
+            cout << "La raíz cuadrada de " << num1 << " es: " << raizCuadrada(num1) << endl;
+            return 0;  
+        default:
+            cout << "Opción no válida" << endl;
+            return 1;  
+    }
+
+    cout << "El resultado es: " << resultado << endl;
+
+    return 0;
+}
+
+int suma(int num1, int num2) {
+    return num1 + num2;
+}
+
+int resta(int num1, int num2) {
+    return num1 - num2;
+}
+
+int multiplicacion(int num1, int num2) {
+    return num1 * num2;
+}
+
+int division(int num1, int num2) {
+    if (num2 != 0) {
+        return num1 / num2;
+    } else {
+        cout << "Error: No es posible dividir entre cero." << endl;
+        return 0;
+    }
+}
+
+double raizCuadrada(int num) {
+    return sqrt(num);
+}
