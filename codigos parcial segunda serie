@@ -1,0 +1,92 @@
+#include <iostream>
+using namespace std;
+
+bool esPrimo(int numero) {
+    if (numero <= 1) {
+        return false;
+    }
+    
+    for (int i = 2; i * i <= numero; ++i) {
+        if (numero % i == 0) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+int main() {
+    int numero;
+    cout << "Ingrese un numero para saber si es primo"<< endl;
+cin >> numero;
+
+    if (esPrimo(numero)) {
+        cout << numero << " Es primo." << endl;
+    } else {
+        cout << numero << " No es primo." << endl;
+    }
+
+    return 0;
+}
+    
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    double numero;
+    cout << "Ingrese un numero"<< endl;
+    cin >> numero;
+
+    if (numero >= 0) {
+        double raizCuadrada = sqrt(numero);
+        cout << "La raiz cuadrada de " << numero << " es: " << raizCuadrada << endl;
+    } else {
+        cout << "De un numero negativo no se puede." << endl;
+    }
+
+    return 0;
+}
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b;
+    cout << "Ingrese el valor de a: ";
+    cin >> a;
+    cout << "Ingrese el valor de b: ";
+    cin >> b;
+
+    cout << "Suma: " << a + b << endl;
+    cout << "Resta: " << a - b << endl;
+    cout << "Multiplicacion: " << a * b << endl;
+
+    if (b != 0) {
+        cout << "Division: " << static_cast<double>(a) / b << endl;
+    } else {
+        cout << "No se puede dividir por cero." << endl;
+    }
+
+    return 0;
+}
+#include <iostream>
+using namespace std;
+int main() {
+    int n, suma = 0;
+    cout << "Ingrese un numero entero positivo : ";
+    cin >> n;
+
+    if (n < 1) {
+        cout << "Ingrese un numero positivo." << endl;
+        return 1;
+    }
+
+    for (int i = 1; i <= n; ++i) {
+        suma += i;
+    }
+
+    cout << "La suma de los numeros enteros desde 1 hasta " << n << " es: " << suma << endl;
+
+    return 0;
+}
+
