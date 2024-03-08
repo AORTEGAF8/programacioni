@@ -1,0 +1,171 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Libro {
+private:
+    string titulo;
+    string autor;
+    int anoPublicacion;
+
+public:
+    Libro(string t, string a, int ano) : titulo(t), autor(a), anoPublicacion(ano) {}
+
+    void MostrarInformacion() {
+        cout << "Titulo: " << titulo << endl;
+        cout << "Autor: " << autor << endl;
+        cout << "Ano de Publicacion: " << anoPublicacion << endl;
+    }
+};
+
+class Estudiante {
+private:
+    string nombre;
+    string apellido;
+    int edad;
+    string curso;
+
+public:
+    Estudiante(string n, string a, int e, string c) : nombre(n), apellido(a), edad(e), curso(c) {}
+
+    void MostrarInformacion() {
+        cout << "Nombre: " << nombre << endl;
+        cout << "Apellido: " << apellido << endl;
+        cout << "Edad: " << edad << endl;
+        cout << "Curso: " << curso << endl;
+    }
+};
+
+class Calculadora {
+private:
+    double num1;
+    double num2;
+
+public:
+    Calculadora(double n1, double n2) : num1(n1), num2(n2) {}
+
+    double Suma() {
+        return num1 + num2;
+    }
+
+    double Resta() {
+        return num1 - num2;
+    }
+
+    double Multiplicacion() {
+        return num1 * num2;
+    }
+
+    double Division() {
+        if (num2 != 0) {
+            return num1 / num2;
+        } else {
+            cout << "Error: Division por cero." << endl;
+            return 0;
+        }
+    }
+};
+
+class CuentaBancaria {
+private:
+    string nombreTitular;
+    string numeroCuenta;
+    double saldo;
+
+public:
+    CuentaBancaria(string nombre, string numero, double s) : nombreTitular(nombre), numeroCuenta(numero), saldo(s) {}
+
+    void Depositar(double cantidad) {
+        saldo += cantidad;
+    }
+
+    void Retirar(double cantidad) {
+        if (cantidad <= saldo) {
+            saldo -= cantidad;
+        } else {
+            cout << "Saldo insuficiente." << endl;
+        }
+    }
+
+    double ConsultarSaldo() {
+        return saldo;
+    }
+};
+
+class Pelicula {
+private:
+    string titulo;
+    string director;
+    int anoLanzamiento;
+
+public:
+    Pelicula(string t, string d, int ano) : titulo(t), director(d), anoLanzamiento(ano) {}
+
+    void MostrarInformacion() {
+        cout << "Titulo: " << titulo << endl;
+        cout << "Director: " << director << endl;
+        cout << "Ano de Lanzamiento: " << anoLanzamiento << endl;
+    }
+};
+
+int main() {
+    int opcion;
+
+    do {
+        cout << "Seleccione una opcion:" << endl;
+        cout << "1. Gestion de Libros" << endl;
+        cout << "2. Registro de Estudiantes" << endl;
+        cout << "3. Calculadora Simple" << endl;
+        cout << "4. Gestion de Cuentas Bancarias" << endl;
+        cout << "5. Registro de Peliculas" << endl;
+        cout << "0. Salir" << endl;
+
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1: {
+                Libro libro1("El senor de los anillos", "J.R.R. Tolkien", 1954);
+                libro1.MostrarInformacion();
+                break;
+            }
+            case 2: {
+                Estudiante estudiante1("Juan", "Perez", 20, "Ingenieria");
+                estudiante1.MostrarInformacion();
+                break;
+            }
+            case 3: {
+                double num1, num2;
+                cout << "Ingrese dos numeros: ";
+                cin >> num1 >> num2;
+
+                Calculadora calc(num1, num2);
+                cout << "Suma: " << calc.Suma() << endl;
+                cout << "Resta: " << calc.Resta() << endl;
+                cout << "Multiplicacion: " << calc.Multiplicacion() << endl;
+                cout << "Division: " << calc.Division() << endl;
+                break;
+            }
+            case 4: {
+                CuentaBancaria cuenta("Juan Perez", "123456789", 1000.0);
+                cuenta.Depositar(500.0);
+                cuenta.Retirar(200.0);
+                cout << "Saldo actual: " << cuenta.ConsultarSaldo() << endl;
+                break;
+            }
+            case 5: {
+                Pelicula pelicula1("Titanic", "James Cameron", 1997);
+                pelicula1.MostrarInformacion();
+                break;
+            }
+            case 0:
+                cout << "Saliendo del programa." << endl;
+                break;
+            default:
+                cout << "Opcion no valida. Intente de nuevo." << endl;
+        }
+
+    } while (opcion != 0);
+
+    return 0;
+}
