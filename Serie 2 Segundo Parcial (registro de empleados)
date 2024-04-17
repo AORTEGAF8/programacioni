@@ -1,0 +1,53 @@
+class Empleado:
+    def__init__(self):
+        self.nombre = ""
+        self.apellido = ""
+        self.edad = 0
+        self.salario = 0.0
+
+    def establecer_nombre(self, nombre):
+        self.nombre = nombre
+
+    def obtener_nombre(self):
+        return self.nombre
+
+    def establecer_apellido(self, apellido):
+        self.apellido = apellido
+
+    def obtener_apellido(self):
+        return self.apellido
+
+    def establecer_edad(self, edad):
+        self.edad = edad
+
+    def obtener_edad(self):
+        return self.edad
+
+    def establecer_salario(self, salario):
+        self.salario = salario
+
+    def obtener_salario(self):
+        return self.salario
+
+def main():
+    with open("empleados.txt", "a") as archivo:
+        while True:
+            nombre = input("Ingrese el nombre del empleado: ")
+            apellido = input("Ingrese el apellido del empleado: ")
+            edad = input("Ingrese la edad del empleado: ")
+            salario = input("Ingrese el salario del empleado: ")
+            
+            empleado = Empleado()
+            empleado.establecer_nombre(nombre)
+            empleado.establecer_apellido(apellido)
+            empleado.establecer_edad(edad)
+            empleado.establecer_salario(salario)
+            
+            archivo.write(f"{nombre},{apellido},{edad},{salario}\n")
+            
+            continuar = input("¿Desea ingresar otro empleado? (s/n): ")
+            if continuar.lower() != "s":
+                break
+
+if __name__ == "__main__":
+    main()
