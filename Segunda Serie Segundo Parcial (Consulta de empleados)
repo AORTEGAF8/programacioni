@@ -1,0 +1,29 @@
+#include iostream
+#include fstream
+def buscar_empleado(nombre_completo):
+    with open("empleados.txt", "r") as archivo:
+        for linea in archivo:
+            empleado = linea.strip().split(",")
+            nombre_apellido = empleado[0] + " " + empleado[1]
+            if nombre_completo.lower() == nombre_apellido.lower():
+                return empleado
+        return None
+
+def main():
+    while True:
+        nombre_completo = input("Ingrese el nombre completo del empleado (Nombre Apellido): ")
+        empleado = buscar_empleado(nombre_completo)
+        if empleado:
+            print("Nombre:", empleado[0])
+            print("Apellido:", empleado[1])
+            print("Edad:", empleado[2])
+            print("Salario:", empleado[3])
+        else:
+            print("El empleado no fue encontrado.")
+        
+        continuar = input("¿Desea buscar otro empleado? (s/n): ")
+        if continuar.lower() != "s":
+            break
+
+if __name__ == "__main__":
+    main()
