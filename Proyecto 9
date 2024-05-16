@@ -1,0 +1,82 @@
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+class ColaBase {
+public:
+    virtual void pushElement(int elemento) = 0;
+    virtual void popElement() = 0;
+    virtual ~ColaBase() {}
+};
+
+class ColaEnteros : public ColaBase {
+private:
+    queue<int> cola;
+
+public:
+    void pushElement(int elemento) override {
+        cola.push(elemento);
+    }
+
+    void popElement() override {
+        if (!cola.empty()) {
+            cout << "Elemento eliminado: " << cola.front() << endl;
+            cola.pop();
+        } else {
+            cout << "La cola está vacía." << endl;
+        }
+    }
+};
+
+class ColaFlotantes : public ColaBase {
+private:
+    queue<float> cola;
+
+public:
+    void pushElement(int elemento) override {
+        // Convierte el entero a float y lo inserta
+        cola.push(static_cast<float>(elemento));
+    }
+
+    void pushElement(float elemento) {
+        cola.push(elemento);
+    }
+
+    void popElement() override {
+        if (!cola.empty()) {
+            cout << "Elemento eliminado: " << cola.front() << endl;
+            cola.pop();
+        } else {
+            cout << "La cola está vacía." << endl;
+        }
+    }
+};
+
+int main() {
+    ColaBase* colaEnteros = new ColaEnteros();
+    colaEnteros->pushElement(10);
+    colaEnteros->pushElement(20);
+    colaEnteros->pushElement(30);
+
+    colaEnteros->popElement();
+    colaEnteros->popElement();
+    colaEnteros->popElement();
+    colaEnteros->popElement();
+
+    delete colaEnteros;
+
+    ColaFlotantes* colaFlotantes = new ColaFlotantes();
+    colaFlotantes->pushElement(10.5f);
+    colaFlotantes->pushElement(20.5f);
+    colaFlotantes->pushElement(30.5f);
+
+    colaFlotantes->popElement();
+    colaFlotantes->popElement();
+    colaFlotantes->popElement();
+    colaFlotantes->popElement();
+
+    delete colaFlotantes;
+
+    return 0;
+}
